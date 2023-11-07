@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+Ingresar nuevo libro
+{% endblock titulo %}
+
+{% block contenido %}
+<form method="post">
+  {% csrf_token %}
+  {{ formulario.as_p }}
+  {{ formulario.errors }}
+  <input type="submit" value="Enviar"/>
+</form>
+<br>
+<a href="{% url 'ficcion' %}">Volver a la lista</a>
+{% endblock contenido %}
