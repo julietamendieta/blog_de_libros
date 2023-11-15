@@ -17,4 +17,9 @@ urlpatterns = [
     path('buscar-libro-filo/', buscar_libro_filo, name="buscar_libro_filo"),
     path('buscar-libro-infantil/', buscar_libro_infantil, name="buscar_libro_infantil"),
     path('buscar-libro-poesia/', buscar_libro_poesia, name="buscar_libro_poesia"),
+    path('eliminar-bios/<int:id>/', eliminar_bios, name="eliminar_bios"),
+    path('eliminar-ficcion/<int:id>/', eliminar_ficcion, name="eliminar_ficcion"),
+    path('eliminar-infantil/<int:id>/', eliminar_infantil, name="eliminar_infantil"),
+    path('eliminar-poesia/<int:id>/', eliminar_poesia, name="eliminar_poesia"),
+    path('eliminar-filo/<int:id>/', eliminar_filo, name="eliminar_filo"),
 ]

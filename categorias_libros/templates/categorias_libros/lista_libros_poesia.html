@@ -18,14 +18,30 @@
 </form>
 <br>
 <h3>Libros:</h3>
-<ul>
-{% for libro in libros_poesia %}
-  <li>
-    {{libro.nombre}}, de {{libro.autor}}<br>
-    Publicado en {{libro.año_publicacion}}<br>
-    Sinopsis: {{libro.sinopsis}}<br>
-    Reseña: {{libro.reseña}}
-  </li>
-{% endfor %}
-<ul>
+<table class="table">
+  <tbody>
+    <tr>
+      <th>Nombre</th>
+      <th>Autor</th>
+      <th>Año de publicación</th>
+      <th>Sinopsis</th>
+      <th>Reseña</th>
+    </tr>
+    {% for libro in libros_poesia %}
+    <tr>
+      <td>{{libro.nombre}}</td>
+      <td>{{libro.autor}}</td>
+      <td>{{libro.año_publicacion}}</td>
+      <td>{{libro.sinopsis}}</td>
+      <td>{{libro.reseña}}</td>
+      <td>
+        <form action="{% url 'eliminar_poesia' libro.id %}" method="post">
+          {% csrf_token %}
+          <input type="submit" class "btn btn-link" value="Eliminar"/>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 {% endblock contenido %}

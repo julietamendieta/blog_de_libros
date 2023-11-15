@@ -259,3 +259,38 @@ def buscar_libro_infantil(request):
             context=contexto,
         )
         return http_response
+    
+def eliminar_bios(request, id):
+    bios = Biografia.objects.get(id=id)
+    if request.method == "POST":
+        bios.delete()
+        url_exitosa = reverse('biografias')
+        return redirect(url_exitosa)
+    
+def eliminar_ficcion(request, id):
+    ficcion = Ficcion.objects.get(id=id)
+    if request.method == "POST":
+        ficcion.delete()
+        url_exitosa = reverse('ficcion')
+        return redirect(url_exitosa)
+    
+def eliminar_infantil(request, id):
+    infantil = InfantilYJuvenil.objects.get(id=id)
+    if request.method == "POST":
+        infantil.delete()
+        url_exitosa = reverse('infantil-y-juvenil')
+        return redirect(url_exitosa)
+    
+def eliminar_poesia(request, id):
+    poesia = Poesia.objects.get(id=id)
+    if request.method == "POST":
+        poesia.delete()
+        url_exitosa = reverse('poesia')
+        return redirect(url_exitosa)
+    
+def eliminar_filo(request, id):
+    filo = FilosofiaYReligion.objects.get(id=id)
+    if request.method == "POST":
+        filo.delete()
+        url_exitosa = reverse('filosofia-y-religion')
+        return redirect(url_exitosa)
