@@ -5,7 +5,11 @@
 {% endblock titulo %}
 
 {% block contenido %}
+{% if user.is_aunthenticated %}
 <h1>¡Bienvenido/a {{user.first_name}}!</h1>
+{% else %}
+<h1>¡Bienvenido/a!</h1>
+{% endif %}
 <br><br>
 <h5>Encontrá acá tu siguiente lectura, leé novedades sobre la comunidad lectora y conocé los autores más recomendados.</h5>
 {% endblock contenido %}
