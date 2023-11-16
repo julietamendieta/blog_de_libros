@@ -27,4 +27,9 @@ urlpatterns = [
     path('editar-infantil/<int:id>/', editar_infantil, name="editar_infantil"),
     path('editar-poesia/<int:id>/', editar_poesia, name="editar_poesia"),
     path('editar-filo/<int:id>/', editar_filo, name="editar_filo"),
+    path('detalles-bios/<int:pk>', BiografiaDetailView.as_view(), name="detalles_bios"),
+    path('detalles-ficcion/<int:pk>', FiccionDetailView.as_view(), name="detalles_ficcion"),
+    path('detalles-poesia/<int:pk>', PoesiaDetailView.as_view(), name="detalles_poesia"),
+    path('detalles-infantil/<int:pk>', InfantilYJuvenilDetailView.as_view(), name="detalles_infantil"),
+    path('detalles-filo/<int:pk>', FilosofiaYReligionDetailView.as_view(), name="detalles_filo"),
 ]

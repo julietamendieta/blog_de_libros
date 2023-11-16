@@ -23,9 +23,6 @@
     <tr>
       <th>Nombre</th>
       <th>Autor</th>
-      <th>Año de publicación</th>
-      <th>Sinopsis</th>
-      <th>Reseña</th>
       <th></th>
       <th></th>
     </tr>
@@ -33,9 +30,12 @@
     <tr>
       <td>{{libro.nombre}}</td>
       <td>{{libro.autor}}</td>
-      <td>{{libro.año_publicacion}}</td>
-      <td>{{libro.sinopsis}}</td>
-      <td>{{libro.reseña}}</td>
+      <td>
+        <form action="{% url 'detalles_ficcion' libro.id %}">
+          {% csrf_token %}
+          <input type="submit" class "btn btn-link" value="Ver más"/>
+        </form>
+      </td>
       <td>
         <form action="{% url 'editar_ficcion' libro.id %}">
           {% csrf_token %}

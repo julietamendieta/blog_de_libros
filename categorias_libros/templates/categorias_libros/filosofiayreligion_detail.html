@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<h3>Filosofía y Religión</h3>
+<br>
+<p>
+  <strong>Libro:</strong> {{object.nombre}}
+</p>
+<p>
+  <strong>Autor:</strong> {{object.autor}}
+</p>
+<p>
+  <strong>Año de publicación:</strong> {{object.año_publicacion}}
+</p>
+<p>
+  <strong>Descripción:</strong> {{object.descripcion}}
+</p>
+
+<br>
+<a href="{% url 'filosofia-y-religion' %}">Volver</a>
+<a href="{% url 'editar_filo' object.id %}">Editar</a>
+
+{% endblock contenido %}

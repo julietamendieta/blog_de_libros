@@ -6,7 +6,6 @@ class Ficcion(models.Model):
     autor = models.CharField(max_length=256)
     año_publicacion = models.IntegerField(blank=True, null=True)
     sinopsis = models.TextField(null=True)
-    reseña = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.nombre} ({self.autor})"
@@ -16,7 +15,6 @@ class Poesia(models.Model):
     autor = models.CharField(max_length=256)
     año_publicacion = models.IntegerField(blank=True, null=True)
     sinopsis = models.TextField(null=True)
-    reseña = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.nombre} ({self.autor})"
@@ -26,7 +24,6 @@ class Biografia(models.Model):
     autor = models.CharField(max_length=256)
     año_publicacion = models.IntegerField(blank=True, null=True)
     sinopsis = models.TextField(null=True)
-    reseña = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.nombre} ({self.autor})"
@@ -37,7 +34,6 @@ class InfantilYJuvenil(models.Model):
     autor = models.CharField(max_length=256)
     año_publicacion = models.IntegerField(blank=True, null=True)
     sinopsis = models.TextField(null=True)
-    reseña = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.nombre} ({self.autor})"
@@ -47,7 +43,6 @@ class FilosofiaYReligion(models.Model):
     autor = models.CharField(max_length=256)
     año_publicacion = models.IntegerField(blank=True, null=True)
     descripcion = models.TextField(null=True)
-    reseña = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.nombre} ({self.autor})"

@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from categorias_libros.models import *
 from categorias_libros.forms import *
 from django.db.models import Q
+from django.views.generic import DetailView
 
 def listar_libros_ficcion(request):
     contexto = {
@@ -71,8 +72,7 @@ def ingresar_libro_ficcion(request):
            autor = data['autor']
            año_publicacion = data['año_publicacion']
            sinopsis = data['sinopsis']
-           reseña = data['reseña']
-           libro_ficcion = Ficcion(genero=data['genero'], nombre=data['nombre'], autor=data['autor'], año_publicacion=data['año_publicacion'], sinopsis=data['sinopsis'], reseña=data['reseña'])
+           libro_ficcion = Ficcion(genero=data['genero'], nombre=data['nombre'], autor=data['autor'], año_publicacion=data['año_publicacion'], sinopsis=data['sinopsis'])
            libro_ficcion.save()
            url_exitosa = reverse('ficcion')
            return redirect(url_exitosa)
@@ -96,8 +96,7 @@ def ingresar_libro_bios(request):
            autor = data['autor']
            año_publicacion = data['año_publicacion']
            sinopsis = data['sinopsis']
-           reseña = data['reseña']
-           libro_bios = Biografia(nombre=data['nombre'], autor=data['autor'], año_publicacion=data['año_publicacion'], sinopsis=data['sinopsis'], reseña=data['reseña'])
+           libro_bios = Biografia(nombre=data['nombre'], autor=data['autor'], año_publicacion=data['año_publicacion'], sinopsis=data['sinopsis'])
            libro_bios.save()
            url_exitosa = reverse('biografias')
            return redirect(url_exitosa)
@@ -120,8 +119,7 @@ def ingresar_libro_poesia(request):
            autor = data['autor']
            año_publicacion = data['año_publicacion']
            sinopsis = data['sinopsis']
-           reseña = data['reseña']
-           libro_poesia = Poesia(nombre=data['nombre'], autor=data['autor'], año_publicacion=data['año_publicacion'], sinopsis=data['sinopsis'], reseña=data['reseña'])
+           libro_poesia = Poesia(nombre=data['nombre'], autor=data['autor'], año_publicacion=data['año_publicacion'], sinopsis=data['sinopsis'])
            libro_poesia.save()
            url_exitosa = reverse('poesia')
            return redirect(url_exitosa)
@@ -144,8 +142,7 @@ def ingresar_libro_filo(request):
            autor = data['autor']
            año_publicacion = data['año_publicacion']
            descripcion = data['descripcion']
-           reseña = data['reseña']
-           libro_filo = FilosofiaYReligion(nombre=data['nombre'], autor=data['autor'], año_publicacion=data['año_publicacion'], descripcion=data['descripcion'], reseña=data['reseña'])
+           libro_filo = FilosofiaYReligion(nombre=data['nombre'], autor=data['autor'], año_publicacion=data['año_publicacion'], descripcion=data['descripcion'])
            libro_filo.save()
            url_exitosa = reverse('filosofia-y-religion')
            return redirect(url_exitosa)
@@ -170,8 +167,7 @@ def ingresar_libro_infantil(request):
            autor = data['autor']
            año_publicacion = data['año_publicacion']
            sinopsis = data['sinopsis']
-           reseña = data['reseña']
-           libro_infantil = InfantilYJuvenil(genero=data['genero'], nombre=data['nombre'], autor=data['autor'], año_publicacion=data['año_publicacion'], sinopsis=data['sinopsis'], reseña=data['reseña'])
+           libro_infantil = InfantilYJuvenil(genero=data['genero'], nombre=data['nombre'], autor=data['autor'], año_publicacion=data['año_publicacion'], sinopsis=data['sinopsis'])
            libro_infantil.save()
            url_exitosa = reverse('infantil-y-juvenil')
            return redirect(url_exitosa)
@@ -438,3 +434,22 @@ def editar_bios(request, id):
        template_name='categorias_libros/ingreso_libro_bios.html',
        context={'formulario': formulario},
    )
+class BiografiaDetailView(DetailView):
+    model = Biografia
+    success_url = reverse_lazy('biografias')
+
+class FiccionDetailView(DetailView):
+    model = Ficcion
+    success_url = reverse_lazy('ficcion')
+
+class InfantilYJuvenilDetailView(DetailView):
+    model = InfantilYJuvenil
+    success_url = reverse_lazy('infantil-y-juvenil')
+
+class PoesiaDetailView(DetailView):
+    model = Poesia
+    success_url = reverse_lazy('poesia')
+
+class FilosofiaYReligionDetailView(DetailView):
+    model = FilosofiaYReligion
+    success_url = reverse_lazy('filosofia-y-religion')
