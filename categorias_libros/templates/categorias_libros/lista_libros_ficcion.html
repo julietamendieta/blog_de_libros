@@ -26,6 +26,8 @@
       <th>Año de publicación</th>
       <th>Sinopsis</th>
       <th>Reseña</th>
+      <th></th>
+      <th></th>
     </tr>
     {% for libro in libros_ficcion %}
     <tr>
@@ -34,6 +36,12 @@
       <td>{{libro.año_publicacion}}</td>
       <td>{{libro.sinopsis}}</td>
       <td>{{libro.reseña}}</td>
+      <td>
+        <form action="{% url 'editar_ficcion' libro.id %}">
+          {% csrf_token %}
+          <input type="submit" class "btn btn-link" value="Editar"/>
+        </form>
+      </td>
       <td>
         <form action="{% url 'eliminar_ficcion' libro.id %}" method="post">
           {% csrf_token %}

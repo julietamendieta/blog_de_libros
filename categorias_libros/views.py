@@ -294,3 +294,147 @@ def eliminar_filo(request, id):
         filo.delete()
         url_exitosa = reverse('filosofia-y-religion')
         return redirect(url_exitosa)
+
+def editar_infantil(request, id):
+   infantil = InfantilYJuvenil.objects.get(id=id)
+   if request.method == "POST":
+       formulario = FormularioInfantilYJuvenilE(request.POST)
+
+       if formulario.is_valid():
+           data = formulario.cleaned_data  # es un diccionario
+           infantil.genero = data['genero']
+           infantil.nombre = data['nombre']
+           infantil.autor = data['autor']
+           infantil.año_publicacion = data['año_publicacion']
+           infantil.sinopsis = data['sinopsis']
+           infantil.save()
+           url_exitosa = reverse('infantil-y-juvenil')
+           return redirect(url_exitosa)
+   else:  # GET
+       inicial = {
+           'genero': infantil.genero,
+           'nombre': infantil.nombre,
+           'autor': infantil.autor,
+           'año_publicacion': infantil.año_publicacion,
+           'sinopsis': infantil.sinopsis,
+       }
+       formulario = FormularioInfantilYJuvenilE(initial=inicial)
+   return render(
+       request=request,
+       template_name='categorias_libros/ingreso_libro_infantil.html',
+       context={'formulario': formulario},
+   )
+
+def editar_ficcion(request, id):
+   ficcion = Ficcion.objects.get(id=id)
+   if request.method == "POST":
+       formulario = FormularioFiccionE(request.POST)
+
+       if formulario.is_valid():
+           data = formulario.cleaned_data  # es un diccionario
+           ficcion.genero = data['genero']
+           ficcion.nombre = data['nombre']
+           ficcion.autor = data['autor']
+           ficcion.año_publicacion = data['año_publicacion']
+           ficcion.sinopsis = data['sinopsis']
+           ficcion.save()
+           url_exitosa = reverse('ficcion')
+           return redirect(url_exitosa)
+   else:  # GET
+       inicial = {
+           'genero': ficcion.genero,
+           'nombre': ficcion.nombre,
+           'autor': ficcion.autor,
+           'año_publicacion': ficcion.año_publicacion,
+           'sinopsis': ficcion.sinopsis,
+       }
+       formulario = FormularioFiccionE(initial=inicial)
+   return render(
+       request=request,
+       template_name='categorias_libros/ingreso_libro_ficcion.html',
+       context={'formulario': formulario},
+   )
+
+def editar_poesia(request, id):
+   poesia = Poesia.objects.get(id=id)
+   if request.method == "POST":
+       formulario = FormularioPoesiaE(request.POST)
+
+       if formulario.is_valid():
+           data = formulario.cleaned_data  # es un diccionario
+           poesia.nombre = data['nombre']
+           poesia.autor = data['autor']
+           poesia.año_publicacion = data['año_publicacion']
+           poesia.sinopsis = data['sinopsis']
+           poesia.save()
+           url_exitosa = reverse('poesia')
+           return redirect(url_exitosa)
+   else:  # GET
+       inicial = {
+           'nombre': poesia.nombre,
+           'autor': poesia.autor,
+           'año_publicacion': poesia.año_publicacion,
+           'sinopsis': poesia.sinopsis,
+       }
+       formulario = FormularioPoesiaE(initial=inicial)
+   return render(
+       request=request,
+       template_name='categorias_libros/ingreso_libro_poesia.html',
+       context={'formulario': formulario},
+   )
+
+def editar_filo(request, id):
+   filo = FilosofiaYReligion.objects.get(id=id)
+   if request.method == "POST":
+       formulario = FormularioFilosofiaYReligionE(request.POST)
+
+       if formulario.is_valid():
+           data = formulario.cleaned_data  # es un diccionario
+           filo.nombre = data['nombre']
+           filo.autor = data['autor']
+           filo.año_publicacion = data['año_publicacion']
+           filo.descripcion = data['descripcion']
+           filo.save()
+           url_exitosa = reverse('filosofia-y-religion')
+           return redirect(url_exitosa)
+   else:  # GET
+       inicial = {
+           'nombre': filo.nombre,
+           'autor': filo.autor,
+           'año_publicacion': filo.año_publicacion,
+           'descripcion': filo.descripcion,
+       }
+       formulario = FormularioFilosofiaYReligionE(initial=inicial)
+   return render(
+       request=request,
+       template_name='categorias_libros/ingreso_libro_filo.html',
+       context={'formulario': formulario},
+   )
+
+def editar_bios(request, id):
+   bios = Biografia.objects.get(id=id)
+   if request.method == "POST":
+       formulario = FormularioBiografiaE(request.POST)
+
+       if formulario.is_valid():
+           data = formulario.cleaned_data  # es un diccionario
+           bios.nombre = data['nombre']
+           bios.autor = data['autor']
+           bios.año_publicacion = data['año_publicacion']
+           bios.sinopsis = data['sinopsis']
+           bios.save()
+           url_exitosa = reverse('biografias')
+           return redirect(url_exitosa)
+   else:  # GET
+       inicial = {
+           'nombre': bios.nombre,
+           'autor': bios.autor,
+           'año_publicacion': bios.año_publicacion,
+           'sinopsis': bios.sinopsis,
+       }
+       formulario = FormularioBiografiaE(initial=inicial)
+   return render(
+       request=request,
+       template_name='categorias_libros/ingreso_libro_bios.html',
+       context={'formulario': formulario},
+   )

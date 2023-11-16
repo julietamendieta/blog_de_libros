@@ -22,4 +22,9 @@ urlpatterns = [
     path('eliminar-infantil/<int:id>/', eliminar_infantil, name="eliminar_infantil"),
     path('eliminar-poesia/<int:id>/', eliminar_poesia, name="eliminar_poesia"),
     path('eliminar-filo/<int:id>/', eliminar_filo, name="eliminar_filo"),
+    path('editar-bios/<int:id>/', editar_bios, name="editar_bios"),
+    path('editar-ficcion/<int:id>/', editar_ficcion, name="editar_ficcion"),
+    path('editar-infantil/<int:id>/', editar_infantil, name="editar_infantil"),
+    path('editar-poesia/<int:id>/', editar_poesia, name="editar_poesia"),
+    path('editar-filo/<int:id>/', editar_filo, name="editar_filo"),
 ]
