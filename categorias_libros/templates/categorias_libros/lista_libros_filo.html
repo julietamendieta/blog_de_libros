@@ -37,16 +37,20 @@
         </form>
       </td>
       <td>
+        {% if user == libro.creador %}
         <form action="{% url 'editar_filo' libro.id %}">
           {% csrf_token %}
           <input type="submit" class "btn btn-link" value="Editar"/>
         </form>
+        {% endif %}
       </td>
       <td>
+        {% if user == libro.creador %}
         <form action="{% url 'eliminar_filo' libro.id %}" method="post">
           {% csrf_token %}
           <input type="submit" class "btn btn-link" value="Eliminar"/>
         </form>
+        {% endif %}
       </td>
     </tr>
     {% endfor %}

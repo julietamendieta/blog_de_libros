@@ -74,7 +74,7 @@ def ingresar_libro_ficcion(request):
            autor = data['autor']
            año_publicacion = data['año_publicacion']
            sinopsis = data['sinopsis']
-           libro_ficcion = Ficcion(genero=data['genero'], nombre=data['nombre'], autor=data['autor'], año_publicacion=data['año_publicacion'], sinopsis=data['sinopsis'])
+           libro_ficcion = Ficcion(genero=data['genero'], nombre=data['nombre'], autor=data['autor'], año_publicacion=data['año_publicacion'], sinopsis=data['sinopsis'], creador=request.user)
            libro_ficcion.save()
            url_exitosa = reverse('ficcion')
            return redirect(url_exitosa)
@@ -98,7 +98,7 @@ def ingresar_libro_bios(request):
            autor = data['autor']
            año_publicacion = data['año_publicacion']
            sinopsis = data['sinopsis']
-           libro_bios = Biografia(nombre=data['nombre'], autor=data['autor'], año_publicacion=data['año_publicacion'], sinopsis=data['sinopsis'])
+           libro_bios = Biografia(nombre=data['nombre'], autor=data['autor'], año_publicacion=data['año_publicacion'], sinopsis=data['sinopsis'], creador=request.user)
            libro_bios.save()
            url_exitosa = reverse('biografias')
            return redirect(url_exitosa)
@@ -122,7 +122,7 @@ def ingresar_libro_poesia(request):
            autor = data['autor']
            año_publicacion = data['año_publicacion']
            sinopsis = data['sinopsis']
-           libro_poesia = Poesia(nombre=data['nombre'], autor=data['autor'], año_publicacion=data['año_publicacion'], sinopsis=data['sinopsis'])
+           libro_poesia = Poesia(nombre=data['nombre'], autor=data['autor'], año_publicacion=data['año_publicacion'], sinopsis=data['sinopsis'], creador=request.user)
            libro_poesia.save()
            url_exitosa = reverse('poesia')
            return redirect(url_exitosa)
@@ -146,7 +146,7 @@ def ingresar_libro_filo(request):
            autor = data['autor']
            año_publicacion = data['año_publicacion']
            descripcion = data['descripcion']
-           libro_filo = FilosofiaYReligion(nombre=data['nombre'], autor=data['autor'], año_publicacion=data['año_publicacion'], descripcion=data['descripcion'])
+           libro_filo = FilosofiaYReligion(nombre=data['nombre'], autor=data['autor'], año_publicacion=data['año_publicacion'], descripcion=data['descripcion'], creador=request.user)
            libro_filo.save()
            url_exitosa = reverse('filosofia-y-religion')
            return redirect(url_exitosa)
@@ -171,7 +171,7 @@ def ingresar_libro_infantil(request):
            autor = data['autor']
            año_publicacion = data['año_publicacion']
            sinopsis = data['sinopsis']
-           libro_infantil = InfantilYJuvenil(genero=data['genero'], nombre=data['nombre'], autor=data['autor'], año_publicacion=data['año_publicacion'], sinopsis=data['sinopsis'])
+           libro_infantil = InfantilYJuvenil(genero=data['genero'], nombre=data['nombre'], autor=data['autor'], año_publicacion=data['año_publicacion'], sinopsis=data['sinopsis'], creador=request.user)
            libro_infantil.save()
            url_exitosa = reverse('infantil-y-juvenil')
            return redirect(url_exitosa)
