@@ -4,6 +4,8 @@ from categorias_libros.models import *
 from categorias_libros.forms import *
 from django.db.models import Q
 from django.views.generic import DetailView
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 def listar_libros_ficcion(request):
     contexto = {
@@ -60,7 +62,7 @@ def listar_libros_infantil(request):
     )
     return http_response
 
-
+@login_required
 def ingresar_libro_ficcion(request):
    if request.method == "POST":
        formulario = FormularioFiccion(request.POST)
@@ -85,7 +87,7 @@ def ingresar_libro_ficcion(request):
    )
    return http_response
 
-
+@login_required
 def ingresar_libro_bios(request):
    if request.method == "POST":
        formulario = FormularioBiografia(request.POST)
@@ -109,6 +111,7 @@ def ingresar_libro_bios(request):
    )
    return http_response
 
+@login_required
 def ingresar_libro_poesia(request):
    if request.method == "POST":
        formulario = FormularioPoesia(request.POST)
@@ -132,6 +135,7 @@ def ingresar_libro_poesia(request):
    )
    return http_response
 
+@login_required
 def ingresar_libro_filo(request):
    if request.method == "POST":
        formulario = FormularioFilosofiaYReligion(request.POST)
@@ -155,7 +159,7 @@ def ingresar_libro_filo(request):
    )
    return http_response
 
-
+@login_required
 def ingresar_libro_infantil(request):
    if request.method == "POST":
        formulario = FormularioInfantilYJuvenil(request.POST)
@@ -255,14 +259,16 @@ def buscar_libro_infantil(request):
             context=contexto,
         )
         return http_response
-    
+
+@login_required
 def eliminar_bios(request, id):
     bios = Biografia.objects.get(id=id)
     if request.method == "POST":
         bios.delete()
         url_exitosa = reverse('biografias')
         return redirect(url_exitosa)
-    
+
+@login_required
 def eliminar_ficcion(request, id):
     ficcion = Ficcion.objects.get(id=id)
     if request.method == "POST":
@@ -270,20 +276,23 @@ def eliminar_ficcion(request, id):
         url_exitosa = reverse('ficcion')
         return redirect(url_exitosa)
     
+@login_required
 def eliminar_infantil(request, id):
     infantil = InfantilYJuvenil.objects.get(id=id)
     if request.method == "POST":
         infantil.delete()
         url_exitosa = reverse('infantil-y-juvenil')
         return redirect(url_exitosa)
-    
+
+@login_required  
 def eliminar_poesia(request, id):
     poesia = Poesia.objects.get(id=id)
     if request.method == "POST":
         poesia.delete()
         url_exitosa = reverse('poesia')
         return redirect(url_exitosa)
-    
+
+@login_required   
 def eliminar_filo(request, id):
     filo = FilosofiaYReligion.objects.get(id=id)
     if request.method == "POST":
@@ -291,6 +300,7 @@ def eliminar_filo(request, id):
         url_exitosa = reverse('filosofia-y-religion')
         return redirect(url_exitosa)
 
+@login_required
 def editar_infantil(request, id):
    infantil = InfantilYJuvenil.objects.get(id=id)
    if request.method == "POST":
@@ -321,6 +331,7 @@ def editar_infantil(request, id):
        context={'formulario': formulario},
    )
 
+@login_required
 def editar_ficcion(request, id):
    ficcion = Ficcion.objects.get(id=id)
    if request.method == "POST":
@@ -351,6 +362,7 @@ def editar_ficcion(request, id):
        context={'formulario': formulario},
    )
 
+@login_required
 def editar_poesia(request, id):
    poesia = Poesia.objects.get(id=id)
    if request.method == "POST":
@@ -379,6 +391,7 @@ def editar_poesia(request, id):
        context={'formulario': formulario},
    )
 
+@login_required
 def editar_filo(request, id):
    filo = FilosofiaYReligion.objects.get(id=id)
    if request.method == "POST":
@@ -407,6 +420,7 @@ def editar_filo(request, id):
        context={'formulario': formulario},
    )
 
+@login_required
 def editar_bios(request, id):
    bios = Biografia.objects.get(id=id)
    if request.method == "POST":
