@@ -25,11 +25,31 @@
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
                 <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a>
-                <a class="navbar-brand" href="{% url 'ficcion' %}">Ficción</a>
-                <a class="navbar-brand" href="{% url 'filosofia-y-religion' %}">Filosofía y Religión</a>
-                <a class="navbar-brand" href="{% url 'infantil-y-juvenil' %}">Infantil y Juvenil</a>
-                <a class="navbar-brand" href="{% url 'poesia' %}">Poesía</a>
-                <a class="navbar-brand" href="{% url 'biografias' %}">Biografías</a>
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div style="display: inline-flex;">
+                            <span><strong>Categorías</strong></span>
+                        </div>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li>
+                            <a class="dropdown-item" href="{% url 'ficcion' %}">Ficcion</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'biografias' %}">Biografias</a>
+                        </li>   
+                        <li>
+                            <a class="dropdown-item" href="{% url 'infantil-y-juvenil' %}">Infantil y Juvenil</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'poesia' %}">Poesia</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'filosofia-y-religion' %}">Filosofia y Religión</a>
+                        </li>
+                    </ul>
+                </div>
+                <a class="navbar-brand" href="{% url 'articulos' %}">Artículos</a>
                 {% if user.is_authenticated %}
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">

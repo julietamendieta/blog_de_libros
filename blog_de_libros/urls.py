@@ -26,6 +26,7 @@ urlpatterns = [
     path('', saludar_con_html, name="inicio"),
     path('libros/', include("categorias_libros.urls")),
     path('perfiles/', include("perfiles.urls")),
+    path('articulos/', include("articulos_blog.urls")),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
