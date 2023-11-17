@@ -24,6 +24,11 @@ python manage.py createsuperuser
 username: administradordelblog
 contraseña: blog1234
 
-# Otro usuario
+# Otros usuarios
+1.
 username: julim
 contraseña: nasha1234
+
+2.
+username: juanp
+contraseña: soyjuan123
