@@ -17,6 +17,7 @@
   <input type="submit" value="Buscar">
 </form>
 <br>
+{% if articulos %}
 <table class="table">
   <tbody>
     <tr>
@@ -38,19 +39,26 @@
         </form>
       </td>
       <td>
+        {% if user == articulo.creador %}
         <form action="{% url 'editar_articulo' articulo.id %}">
           {% csrf_token %}
           <input type="submit" class "btn btn-link" value="Editar"/>
         </form>
+        {% endif %}
       </td>
       <td>
+        {% if user == articulo.creador %}
         <form action="{% url 'eliminar_articulo' articulo.id %}" method="post">
           {% csrf_token %}
           <input type="submit" class "btn btn-link" value="Eliminar"/>
         </form>
+        {% endif %}
       </td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
+{% else %}
+<p>No hay elementos aún</p>
+{% endif %}
 {% endblock contenido %}

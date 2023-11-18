@@ -99,3 +99,4 @@ def editar_articulo(request, id):
 class ArticuloDetailView(DetailView):
     model = Articulo
     success_url = reverse_lazy('articulos')
+

@@ -17,8 +17,8 @@
   <input type="submit" value="Buscar por nombre o autor">
 </form>
 <br>
-
 <h3>Libros:</h3>
+{% if libros_infantil %}
 <table class="table">
   <tbody>
     <tr>
@@ -57,4 +57,7 @@
     {% endfor %}
   </tbody>
 </table>
+{% else %}
+<p>No hay elementos aún</p>
+{% endif %}
 {% endblock contenido %}

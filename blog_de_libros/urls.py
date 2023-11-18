@@ -19,7 +19,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-from blog_de_libros.views import saludar_con_html
+from blog_de_libros.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,6 +27,7 @@ urlpatterns = [
     path('libros/', include("categorias_libros.urls")),
     path('perfiles/', include("perfiles.urls")),
     path('articulos/', include("articulos_blog.urls")),
+    path('about/', about_me, name="about_me")
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
