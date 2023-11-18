@@ -7,7 +7,9 @@ class Articulo(models.Model):
     cuerpo = models.TextField(null=True)
     autor = models.CharField(max_length=256)
     fecha = models.DateField(null=True)
+    imagen = models.ImageField(upload_to="imagenes", null=True)
     creador = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return f"{self.titulo} ({self.autor})"
+

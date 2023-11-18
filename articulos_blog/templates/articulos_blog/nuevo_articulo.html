@@ -5,6 +5,7 @@ Ingresar o editar artículo
 {% endblock titulo %}
 
 {% block contenido %}
+<h3>Nuevo artículo</h3>
 <form method="post">
   {% csrf_token %}
   {{ formulario.as_p }}

@@ -9,3 +9,4 @@ class FormularioArticulo(forms.Form):
     cuerpo = forms.CharField(required=True, max_length=10000)
     autor = forms.CharField(required=True, max_length=256)
     fecha = forms.DateField(required=True)
+    imagen = forms.ImageField(required=False)

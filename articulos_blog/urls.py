@@ -1,5 +1,7 @@
 from django.urls import path
 from articulos_blog.views import *
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('articulos/', listar_articulos, name="articulos"),
