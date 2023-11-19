@@ -6,7 +6,7 @@ Ingresar o editar artículo
 
 {% block contenido %}
 <h3>Nuevo artículo</h3>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
   {% csrf_token %}
   {{ formulario.as_p }}
   {{ formulario.errors }}

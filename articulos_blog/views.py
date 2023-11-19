@@ -20,7 +20,7 @@ def listar_articulos(request):
 @login_required
 def escribir_articulo(request):
    if request.method == "POST":
-       formulario = FormularioArticulo(request.POST)
+       formulario = FormularioArticulo(request.POST, request.FILES)
 
        if formulario.is_valid():
            data = formulario.cleaned_data  # es un diccionario
@@ -29,7 +29,8 @@ def escribir_articulo(request):
            cuerpo = data['cuerpo']
            autor = data['autor']
            fecha = data['fecha']
-           articulo = Articulo(titulo=data['titulo'], subtitulo=data['subtitulo'], cuerpo=data['cuerpo'], autor=data['autor'], fecha=data['fecha'], creador=request.user)
+           imagen = data['imagen']
+           articulo = Articulo(titulo=data['titulo'], subtitulo=data['subtitulo'], cuerpo=data['cuerpo'], autor=data['autor'], fecha=data['fecha'], imagen=data['imagen'], creador=request.user)
            articulo.save()
            url_exitosa = reverse('articulos')
            return redirect(url_exitosa)
@@ -69,7 +70,7 @@ def eliminar_articulo(request, id):
 def editar_articulo(request, id):
    articulo = Articulo.objects.get(id=id)
    if request.method == "POST":
-       formulario = FormularioArticulo(request.POST)
+       formulario = FormularioArticulo(request.POST, request.FILES)
 
        if formulario.is_valid():
            data = formulario.cleaned_data
@@ -78,6 +79,7 @@ def editar_articulo(request, id):
            articulo.cuerpo = data['cuerpo']
            articulo.autor = data['autor']
            articulo.fecha = data['fecha']
+           articulo.imagen = data['imagen']
            articulo.save()
            url_exitosa = reverse('articulos')
            return redirect(url_exitosa)
@@ -88,6 +90,7 @@ def editar_articulo(request, id):
            'cuerpo': articulo.cuerpo,
            'autor': articulo.autor,
            'fecha': articulo.fecha,
+           'imagen': articulo.imagen,
        }
        formulario = FormularioArticulo(initial=inicial)
    return render(

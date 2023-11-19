@@ -11,3 +11,5 @@ urlpatterns = [
     path('editar-articulo/<int:id>/', editar_articulo, name="editar_articulo"),
     path('detalle-articulo/<int:pk>', ArticuloDetailView.as_view(), name="detalle_articulo"),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
