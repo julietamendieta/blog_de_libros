@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'categorias_libros',
     'perfiles',
     'articulos_blog',
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [
