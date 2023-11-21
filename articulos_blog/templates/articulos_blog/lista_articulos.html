@@ -21,6 +21,7 @@
 <table class="table">
   <tbody>
     <tr>
+      <th> </th>
       <th>Título</th>
       <th>Autor</th>
       <th>Fecha</th>
@@ -29,6 +30,7 @@
     </tr>
     {% for articulo in articulos %}
     <tr>
+      <td><img src="{{ articulo.imagen.url }}" style="max-width: 100px;"></td>
       <td><strong>{{articulo.titulo}}</strong><br>{{articulo.subtitulo}}</td>
       <td>{{articulo.autor}}</td>
       <td>{{articulo.fecha}}</td>

@@ -21,6 +21,8 @@
 
 <br>
 <a href="{% url 'ficcion' %}">Volver</a>
+{% if user == articulo.creador %}
 <a href="{% url 'editar_ficcion' object.id %}">Editar</a>
+{% endif %}
 
 {% endblock contenido %}

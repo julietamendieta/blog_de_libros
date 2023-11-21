@@ -18,6 +18,8 @@
 
 <br>
 <a href="{% url 'filosofia-y-religion' %}">Volver</a>
+{% if user == articulo.creador %}
 <a href="{% url 'editar_filo' object.id %}">Editar</a>
+{% endif %}
 
 {% endblock contenido %}
