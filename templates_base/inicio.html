@@ -8,10 +8,11 @@
 {% if user.is_authenticated %}
 <h1>¡Bienvenido/a {{user.first_name}}!</h1>
 <div>
-    <img src="{{ user.avatar.imagen.url }}" style="max-width: 300px;">
+    <img src="{{ user.avatar.imagen.url }}" style="max-width: 200px;margin-left: 100px;">
 </div>
 {% else %}
 <h1>¡Bienvenido/a!</h1>
+<h4>Inicia sesión o regístrate para aprovechar al máximo el blog.</h4>
 {% endif %}
 <br><br>
 <h5>Encontrá acá tu siguiente lectura, leé novedades sobre la comunidad lectora y conocé los autores más recomendados.</h5>

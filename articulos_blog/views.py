@@ -3,9 +3,7 @@ from django.urls import reverse, reverse_lazy
 from articulos_blog.models import *
 from articulos_blog.forms import *
 from django.db.models import Q
-from django.views.generic import DetailView, View, FormView
-from django.views.generic.detail import SingleObjectMixin
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import DetailView
 from django.contrib.auth.decorators import login_required
 
 def listar_articulos(request):

@@ -24,12 +24,12 @@
         <!-- Navigation-->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
-                <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a>
-                <a class="navbar-brand" href="{% url 'about_me' %}">Acerca de mi</a>
+                <a class="navbar-brand" href="{% url 'inicio' %}"><strong><h5>Inicio</h5></strong></a>
+                <a class="navbar-brand" href="{% url 'about_me' %}"><strong><h5>Acerca de mi</h5></strong></a>
                 <div class="dropdown">
                     <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         <div style="display: inline-flex;">
-                            <span><strong>Categorías</strong></span>
+                            <span><h5>Categorías</h5></span>
                         </div>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -50,12 +50,12 @@
                         </li>
                     </ul>
                 </div>
-                <a class="navbar-brand" href="{% url 'articulos' %}">Artículos</a>
+                <a class="navbar-brand" href="{% url 'articulos' %}"><strong><h5>Artículos</h5></strong></a>
                 {% if user.is_authenticated %}
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         <div style="display: inline-flex;">
-                                <img src="{{ user.avatar.imagen.url }}" style="max-width: 40px;margin-right: 10px;">
+                                <img src="{{ user.avatar.imagen.url }}" style="max-width: 40px;margin-right: 20px;">
                             <span>{{ user.username }}</span>
                         </div>
                     </button>
