@@ -6,7 +6,7 @@ from django.contrib.auth.views import LogoutView
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import UpdateView
-
+from django.views.generic import DetailView
 from perfiles.forms import *
 
 def registro(request):
@@ -77,4 +77,3 @@ def agregar_avatar(request):
       template_name="perfiles/formulario_avatar.html",
       context={'form': formulario},
   )
-

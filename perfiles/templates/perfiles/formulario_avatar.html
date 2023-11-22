@@ -5,10 +5,14 @@
 {% endblock titulo %}
 
 {% block contenido %}
+{% if user.avatar %}
+<p>Ya tienes un avatar</p>
+{% else %}
 <h3>Sube tu avatar</h3>
 <form method="post" enctype="multipart/form-data">
  {% csrf_token %}
  {{ form.as_p }}
  <input type="submit" value="Subir imagen"/>
 </form>
+{% endif %}
 {% endblock contenido %}
