@@ -3,7 +3,9 @@ from django.urls import reverse, reverse_lazy
 from articulos_blog.models import *
 from articulos_blog.forms import *
 from django.db.models import Q
-from django.views.generic import DetailView
+from django.views.generic import DetailView, View, FormView
+from django.views.generic.detail import SingleObjectMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 
 def listar_articulos(request):
@@ -23,7 +25,7 @@ def escribir_articulo(request):
        formulario = FormularioArticulo(request.POST, request.FILES)
 
        if formulario.is_valid():
-           data = formulario.cleaned_data  # es un diccionario
+           data = formulario.cleaned_data
            titulo = data['titulo']
            subtitulo = data['subtitulo']
            cuerpo = data['cuerpo']
